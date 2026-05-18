@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.trees.ui.benchmark.BenchmarkController"
+            styleClass="root-pane" prefWidth="1200" prefHeight="800">
+
+    <top>
+        <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="16">
+            <padding><Insets top="12" right="20" bottom="12" left="20"/></padding>
+            
+            <Label text="Benchmark Suite" styleClass="wordmark"/>
+            
+            <Label text="Size (n):" styleClass="ops-label"/>
+            <TextField fx:id="tfSize" text="100000" prefWidth="100" styleClass="ops-input"/>
+            
+            <Label text="Seed:" styleClass="ops-label"/>
+            <TextField fx:id="tfSeed" text="42" prefWidth="100" styleClass="ops-input"/>
+            
+            <Label text="Runs:" styleClass="ops-label"/>
+            <Spinner fx:id="spinnerRuns" prefWidth="75"/>
+            
+            <Button fx:id="btnRunAll" text="Run Full Suite" onAction="#onRunAllClicked" styleClass="btn-primary"/>
+            
+            <Region HBox.hgrow="ALWAYS"/>
+            
+            <Label fx:id="lblStatus" text="Ready" styleClass="status-label"/>
+            <ProgressBar fx:id="progressBar" prefWidth="150" progress="0" styleClass="top-progress"/>
+        </HBox>
+    </top>
+
+    <center>
+        <SplitPane dividerPositions="0.4" styleClass="main-split">
+            
+            <VBox>
+                <HBox styleClass="panel-header" alignment="CENTER_LEFT">
+                    <padding><Insets top="8" right="12" bottom="8" left="12"/></padding>
+                    <Label text="Tabular Results" styleClass="panel-title"/>
+                </HBox>
+                <TableView fx:id="resultsTable" VBox.vgrow="ALWAYS" styleClass="log-table">
+                    <columns>
+                        <TableColumn fx:id="colType" text="Operation" prefWidth="110"/>
+                        <TableColumn fx:id="colMethod" text="Distribution" prefWidth="140"/>
+                        <TableColumn fx:id="colBstTime" text="BST Time" prefWidth="90"/>
+                        <TableColumn fx:id="colRbtTime" text="RBT Time" prefWidth="90"/>
+                        <TableColumn fx:id="colSpeedup" text="Speedup" prefWidth="80"/>
+                    </columns>
+                </TableView>
+            </VBox>
+            
+            <ScrollPane fitToWidth="true" styleClass="canvas-scroll">
+                <VBox fx:id="chartContainer" spacing="30" alignment="CENTER">
+                    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+                </VBox>
+            </ScrollPane>
+            
+        </SplitPane>
+    </center>
+</BorderPane>
