@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.graph.GraphBenchmarkEngineTest" time="0.386" tests="13" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="D:\treeproj\target\test-classes;D:\treeproj\target\classes;C:\Users\Lenovo\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.1\jackson-annotations-2.17.1.jar;C:\Users\Lenovo\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.17.1\jackson-databind-2.17.1.jar;C:\Users\Lenovo\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.1\jackson-core-2.17.1.jar;C:\Users\Lenovo\.m2\repository\org\slf4j\slf4j-api\2.0.9\slf4j-api-2.0.9.jar;C:\Users\Lenovo\.m2\repository\ch\qos\logback\logback-classic\1.4.14\logback-classic-1.4.14.jar;C:\Users\Lenovo\.m2\repository\ch\qos\logback\logback-core\1.4.14\logback-core-1.4.14.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-controls\17.0.10\javafx-controls-17.0.10.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-controls\17.0.10\javafx-controls-17.0.10-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-graphics\17.0.10\javafx-graphics-17.0.10.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-graphics\17.0.10\javafx-graphics-17.0.10-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-base\17.0.10\javafx-base-17.0.10.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-base\17.0.10\javafx-base-17.0.10-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-fxml\17.0.10\javafx-fxml-17.0.10.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-fxml\17.0.10\javafx-fxml-17.0.10-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-swing\17.0.10\javafx-swing-17.0.10.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-swing\17.0.10\javafx-swing-17.0.10-win.jar;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.1\junit-jupiter-5.10.1.jar;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.1\junit-jupiter-api-5.10.1.jar;C:\Users\Lenovo\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Lenovo\.m2\repository\org\junit\platform\junit-platform-commons\1.10.1\junit-platform-commons-1.10.1.jar;C:\Users\Lenovo\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.1\junit-jupiter-params-5.10.1.jar;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.1\junit-jupiter-engine-5.10.1.jar;C:\Users\Lenovo\.m2\repository\org\junit\platform\junit-platform-engine\1.10.1\junit-platform-engine-1.10.1.jar;"/>
+    <property name="java.vm.vendor" value="Eclipse Adoptium"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="user.timezone" value="Africa/Cairo"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-17.0.18.8-hotspot\bin"/>
+    <property name="sun.java.command" value="C:\Users\Lenovo\AppData\Local\Temp\surefire5319515161554032644\surefirebooter-20260522020439843_3.jar C:\Users\Lenovo\AppData\Local\Temp\surefire5319515161554032644 2026-05-22T02-04-38_636-jvmRun1 surefire-20260522020439843_1tmp surefire_0-20260522020439843_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="D:\treeproj\target\test-classes;D:\treeproj\target\classes;C:\Users\Lenovo\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.1\jackson-annotations-2.17.1.jar;C:\Users\Lenovo\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.17.1\jackson-databind-2.17.1.jar;C:\Users\Lenovo\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.1\jackson-core-2.17.1.jar;C:\Users\Lenovo\.m2\repository\org\slf4j\slf4j-api\2.0.9\slf4j-api-2.0.9.jar;C:\Users\Lenovo\.m2\repository\ch\qos\logback\logback-classic\1.4.14\logback-classic-1.4.14.jar;C:\Users\Lenovo\.m2\repository\ch\qos\logback\logback-core\1.4.14\logback-core-1.4.14.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-controls\17.0.10\javafx-controls-17.0.10.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-controls\17.0.10\javafx-controls-17.0.10-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-graphics\17.0.10\javafx-graphics-17.0.10.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-graphics\17.0.10\javafx-graphics-17.0.10-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-base\17.0.10\javafx-base-17.0.10.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-base\17.0.10\javafx-base-17.0.10-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-fxml\17.0.10\javafx-fxml-17.0.10.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-fxml\17.0.10\javafx-fxml-17.0.10-win.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-swing\17.0.10\javafx-swing-17.0.10.jar;C:\Users\Lenovo\.m2\repository\org\openjfx\javafx-swing\17.0.10\javafx-swing-17.0.10-win.jar;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.1\junit-jupiter-5.10.1.jar;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.1\junit-jupiter-api-5.10.1.jar;C:\Users\Lenovo\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Lenovo\.m2\repository\org\junit\platform\junit-platform-commons\1.10.1\junit-platform-commons-1.10.1.jar;C:\Users\Lenovo\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.1\junit-jupiter-params-5.10.1.jar;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.1\junit-jupiter-engine-5.10.1.jar;C:\Users\Lenovo\.m2\repository\org\junit\platform\junit-platform-engine\1.10.1\junit-platform-engine-1.10.1.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\Lenovo"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2026-01-20"/>
+    <property name="java.home" value="C:\Program Files\Eclipse Adoptium\jdk-17.0.18.8-hotspot"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="D:\treeproj"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\Lenovo\AppData\Local\Temp\surefire5319515161554032644\surefirebooter-20260522020439843_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.18+8"/>
+    <property name="user.name" value="Lenovo"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Temurin-17.0.18+8"/>
+    <property name="localRepository" value="C:\Users\Lenovo\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+    <property name="java.io.tmpdir" value="C:\Users\Lenovo\AppData\Local\Temp\"/>
+    <property name="java.version" value="17.0.18"/>
+    <property name="user.dir" value="D:\treeproj"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-17.0.18.8-hotspot\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Users/Lenovo/.gemini/antigravity/bin;C:\Users\Lenovo\AppData\Roaming\Antigravity\bin;C:\Program Files\Eclipse Adoptium\jdk-17.0.18.8-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\MinGW;C:\Program Files\Java\jre1.8.0_351\bin;C:\Program Files\dotnet\;C:\Program Files (x86)\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Microsoft SQL Server\160\DTS\Binn\;C:\Program Files\apache-maven-3.9.11\bin;C:\Program Files\Git\cmd;C:\Users\Lenovo\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Program Files\Tesseract-OCR\;;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\Lenovo\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\Lenovo\AppData\Local\Programs\Python\Python310\;C:\Users\Lenovo\AppData\Local\Programs\Python\Launcher\;C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\Lenovo\AppData\Local\Programs\Python\Python312\;C:\Users\Lenovo\AppData\Local\Microsoft\WindowsApps;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.2.4\bin;;C:\MinGW\bin;C:\Users\Lenovo\Downloads\ghdl-mcode-5.0.0-rc5-mingw64\bin;C:\Users\Lenovo\AppData\Roaming\npm;C:\Users\Lenovo\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\swipl\bin;C:\Users\Lenovo\AppData\Local\Programs\Ollama;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Eclipse Adoptium"/>
+    <property name="java.vm.version" value="17.0.18+8"/>
+    <property name="java.specification.maintenance.version" value="1"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="runFullGraphSuite_allResultsNonNull" classname="com.graph.GraphBenchmarkEngineTest" time="0.202">
+    <system-out><![CDATA[02:04:40.425 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- === runFullGraphSuite: V=200 seed=42 runs=5 ===
+02:04:40.429 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- Running MST benchmarks...
+02:04:40.429 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkMST: topology=SPARSE, V=200, warmup=2, measured=5
+02:04:40.435 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 1/7: Prim=1.4788ms Kruskal=1.5207ms
+02:04:40.436 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 2/7: Prim=0.2821ms Kruskal=0.6879ms
+02:04:40.437 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 3/7: Prim=0.2299ms Kruskal=0.6652ms
+02:04:40.438 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 4/7: Prim=0.2294ms Kruskal=0.6432ms
+02:04:40.439 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 5/7: Prim=0.2362ms Kruskal=0.6514ms
+02:04:40.440 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 6/7: Prim=0.3019ms Kruskal=0.7754ms
+02:04:40.441 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 7/7: Prim=0.2836ms Kruskal=0.5782ms
+02:04:40.443 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkMST: topology=DENSE, V=200, warmup=2, measured=5
+02:04:40.449 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 1/7: Prim=0.7288ms Kruskal=2.6791ms
+02:04:40.452 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 2/7: Prim=0.7392ms Kruskal=2.2062ms
+02:04:40.456 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 3/7: Prim=1.1354ms Kruskal=1.9398ms
+02:04:40.458 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 4/7: Prim=0.7006ms Kruskal=2.7502ms
+02:04:40.461 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 5/7: Prim=0.4519ms Kruskal=1.7528ms
+02:04:40.464 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 6/7: Prim=0.2308ms Kruskal=1.4153ms
+02:04:40.466 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 7/7: Prim=0.288ms Kruskal=1.7555ms
+02:04:40.466 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkMST: topology=COMPLETE, V=200, warmup=2, measured=5
+02:04:40.476 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 1/7: Prim=0.6222ms Kruskal=7.5792ms
+02:04:40.484 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 2/7: Prim=1.3572ms Kruskal=6.2652ms
+02:04:40.491 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 3/7: Prim=0.6653ms Kruskal=7.1187ms
+02:04:40.498 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 4/7: Prim=0.6766ms Kruskal=5.3002ms
+02:04:40.503 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 5/7: Prim=0.6998ms Kruskal=5.0838ms
+02:04:40.509 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 6/7: Prim=0.5601ms Kruskal=4.5643ms
+02:04:40.514 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 7/7: Prim=0.5477ms Kruskal=4.5585ms
+02:04:40.514 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- Running Dijkstra benchmarks across densities...
+02:04:40.514 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkDijkstra: topology=SPARSE, V=200
+02:04:40.516 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 1/7: 0.9752ms
+02:04:40.517 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 2/7: 0.4159ms
+02:04:40.517 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 3/7: 0.496ms
+02:04:40.517 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 4/7: 0.3791ms
+02:04:40.518 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 5/7: 0.3658ms
+02:04:40.518 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 6/7: 0.478ms
+02:04:40.519 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 7/7: 0.5857ms
+02:04:40.519 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkDijkstra: topology=DENSE, V=200
+02:04:40.522 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 1/7: 1.0777ms
+02:04:40.522 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 2/7: 1.0661ms
+02:04:40.523 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 3/7: 1.0592ms
+02:04:40.525 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 4/7: 1.2677ms
+02:04:40.527 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 5/7: 1.1169ms
+02:04:40.527 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 6/7: 0.6279ms
+02:04:40.528 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 7/7: 0.3555ms
+02:04:40.528 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkDijkstra: topology=COMPLETE, V=200
+02:04:40.529 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 1/7: 0.6814ms
+02:04:40.530 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 2/7: 0.596ms
+02:04:40.531 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 3/7: 0.6995ms
+02:04:40.532 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 4/7: 0.5527ms
+02:04:40.533 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 5/7: 0.481ms
+02:04:40.533 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 6/7: 0.4518ms
+02:04:40.534 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 7/7: 0.4578ms
+02:04:40.534 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkDijkstra: topology=DAG, V=200
+02:04:40.534 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 1/7: 0.0334ms
+02:04:40.534 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 2/7: 0.0296ms
+02:04:40.534 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 3/7: 0.026ms
+02:04:40.534 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 4/7: 0.0252ms
+02:04:40.535 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 5/7: 0.0356ms
+02:04:40.535 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 6/7: 0.0606ms
+02:04:40.535 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 7/7: 0.0342ms
+02:04:40.535 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- Running DAG-SP vs Dijkstra comparison...
+02:04:40.535 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkDAGvsDAGSP: V=200
+02:04:40.535 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 1/7: Dijkstra=0.0303ms DAG-SP=0.2258ms
+02:04:40.536 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 2/7: Dijkstra=0.0268ms DAG-SP=0.2177ms
+02:04:40.536 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 3/7: Dijkstra=0.0231ms DAG-SP=0.1989ms
+02:04:40.536 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 4/7: Dijkstra=0.0251ms DAG-SP=0.1997ms
+02:04:40.537 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 5/7: Dijkstra=0.0184ms DAG-SP=0.3397ms
+02:04:40.537 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 6/7: Dijkstra=0.0307ms DAG-SP=0.195ms
+02:04:40.538 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 7/7: Dijkstra=0.0252ms DAG-SP=0.2063ms
+02:04:40.538 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- === runFullGraphSuite complete: 8 results ===
+]]></system-out>
+  </testcase>
+  <testcase name="benchmarkDAGvsDAGSP_algoNamesCorrect" classname="com.graph.GraphBenchmarkEngineTest" time="0.005">
+    <system-out><![CDATA[02:04:40.554 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkDAGvsDAGSP: V=200
+02:04:40.554 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 1/7: Dijkstra=0.0433ms DAG-SP=0.2628ms
+02:04:40.555 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 2/7: Dijkstra=0.0495ms DAG-SP=0.2785ms
+02:04:40.555 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 3/7: Dijkstra=0.0449ms DAG-SP=0.2664ms
+02:04:40.556 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 4/7: Dijkstra=0.1484ms DAG-SP=0.1973ms
+02:04:40.556 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 5/7: Dijkstra=0.028ms DAG-SP=0.2161ms
+02:04:40.556 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 6/7: Dijkstra=0.0245ms DAG-SP=0.2301ms
+02:04:40.557 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 7/7: Dijkstra=0.0245ms DAG-SP=0.2244ms
+]]></system-out>
+  </testcase>
+  <testcase name="benchmarkDAGvsDAGSP_speedupNotNaN" classname="com.graph.GraphBenchmarkEngineTest" time="0.004">
+    <system-out><![CDATA[02:04:40.559 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkDAGvsDAGSP: V=200
+02:04:40.560 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 1/7: Dijkstra=0.0274ms DAG-SP=0.23ms
+02:04:40.560 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 2/7: Dijkstra=0.0306ms DAG-SP=0.205ms
+02:04:40.560 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 3/7: Dijkstra=0.0315ms DAG-SP=0.2681ms
+02:04:40.561 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 4/7: Dijkstra=0.0615ms DAG-SP=0.2083ms
+02:04:40.562 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 5/7: Dijkstra=0.0304ms DAG-SP=0.1983ms
+02:04:40.562 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 6/7: Dijkstra=0.0337ms DAG-SP=0.1953ms
+02:04:40.562 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 7/7: Dijkstra=0.0236ms DAG-SP=0.2622ms
+]]></system-out>
+  </testcase>
+  <testcase name="benchmarkDijkstra_allTopologies_noException" classname="com.graph.GraphBenchmarkEngineTest" time="0.011">
+    <system-out><![CDATA[02:04:40.564 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkDijkstra: topology=SPARSE, V=200
+02:04:40.565 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 1/7: 0.0641ms
+02:04:40.565 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 2/7: 0.0618ms
+02:04:40.565 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 3/7: 0.0547ms
+02:04:40.565 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 4/7: 0.0522ms
+02:04:40.565 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 5/7: 0.0532ms
+02:04:40.565 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 6/7: 0.1716ms
+02:04:40.565 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 7/7: 0.0554ms
+02:04:40.565 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkDijkstra: topology=DENSE, V=200
+02:04:40.567 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 1/7: 0.5818ms
+02:04:40.567 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 2/7: 0.1979ms
+02:04:40.568 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 3/7: 0.1827ms
+02:04:40.568 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 4/7: 0.2201ms
+02:04:40.568 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 5/7: 0.1851ms
+02:04:40.568 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 6/7: 0.1719ms
+02:04:40.569 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 7/7: 0.1761ms
+02:04:40.569 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkDijkstra: topology=COMPLETE, V=200
+02:04:40.570 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 1/7: 0.311ms
+02:04:40.571 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 2/7: 0.3026ms
+02:04:40.571 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 3/7: 0.2569ms
+02:04:40.571 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 4/7: 0.2421ms
+02:04:40.572 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 5/7: 0.2317ms
+02:04:40.572 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 6/7: 0.2614ms
+02:04:40.572 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 7/7: 0.2388ms
+02:04:40.572 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkDijkstra: topology=DAG, V=200
+02:04:40.572 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 1/7: 0.0261ms
+02:04:40.572 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 2/7: 0.0241ms
+02:04:40.573 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 3/7: 0.0171ms
+02:04:40.573 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 4/7: 0.0209ms
+02:04:40.573 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 5/7: 0.0158ms
+02:04:40.573 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 6/7: 0.0122ms
+02:04:40.573 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 7/7: 0.0116ms
+]]></system-out>
+  </testcase>
+  <testcase name="benchmarkMST_dag_throwsIllegalArgument" classname="com.graph.GraphBenchmarkEngineTest" time="0.001"/>
+  <testcase name="runFullGraphSuite_returns8Results" classname="com.graph.GraphBenchmarkEngineTest" time="0.057">
+    <system-out><![CDATA[02:04:40.576 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- === runFullGraphSuite: V=200 seed=42 runs=5 ===
+02:04:40.576 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- Running MST benchmarks...
+02:04:40.576 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkMST: topology=SPARSE, V=200, warmup=2, measured=5
+02:04:40.577 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 1/7: Prim=0.0791ms Kruskal=0.221ms
+02:04:40.577 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 2/7: Prim=0.0784ms Kruskal=0.2251ms
+02:04:40.578 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 3/7: Prim=0.0623ms Kruskal=0.3992ms
+02:04:40.578 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 4/7: Prim=0.0618ms Kruskal=0.2091ms
+02:04:40.578 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 5/7: Prim=0.0621ms Kruskal=0.1968ms
+02:04:40.579 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 6/7: Prim=0.0731ms Kruskal=0.3303ms
+02:04:40.580 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 7/7: Prim=0.076ms Kruskal=0.2392ms
+02:04:40.580 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkMST: topology=DENSE, V=200, warmup=2, measured=5
+02:04:40.586 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 1/7: Prim=0.1417ms Kruskal=3.6322ms
+02:04:40.587 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 2/7: Prim=0.1543ms Kruskal=1.0148ms
+02:04:40.588 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 3/7: Prim=0.1547ms Kruskal=0.9938ms
+02:04:40.589 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 4/7: Prim=0.1314ms Kruskal=1.047ms
+02:04:40.591 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 5/7: Prim=0.1397ms Kruskal=0.9928ms
+02:04:40.592 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 6/7: Prim=0.1413ms Kruskal=1.0665ms
+02:04:40.593 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 7/7: Prim=0.1479ms Kruskal=1.0903ms
+02:04:40.593 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkMST: topology=COMPLETE, V=200, warmup=2, measured=5
+02:04:40.598 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 1/7: Prim=0.2969ms Kruskal=4.0401ms
+02:04:40.603 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 2/7: Prim=0.3707ms Kruskal=3.909ms
+02:04:40.608 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 3/7: Prim=0.3344ms Kruskal=3.9414ms
+02:04:40.612 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 4/7: Prim=0.283ms Kruskal=3.8448ms
+02:04:40.616 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 5/7: Prim=0.333ms Kruskal=3.7077ms
+02:04:40.620 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 6/7: Prim=0.2757ms Kruskal=3.5987ms
+02:04:40.624 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 7/7: Prim=0.2452ms Kruskal=3.6895ms
+02:04:40.624 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- Running Dijkstra benchmarks across densities...
+02:04:40.624 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkDijkstra: topology=SPARSE, V=200
+02:04:40.625 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 1/7: 0.0524ms
+02:04:40.625 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 2/7: 0.0458ms
+02:04:40.625 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 3/7: 0.0354ms
+02:04:40.625 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 4/7: 0.0307ms
+02:04:40.625 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 5/7: 0.0257ms
+02:04:40.625 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 6/7: 0.0229ms
+02:04:40.625 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 7/7: 0.0212ms
+02:04:40.625 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkDijkstra: topology=DENSE, V=200
+02:04:40.626 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 1/7: 0.1352ms
+02:04:40.626 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 2/7: 0.1409ms
+02:04:40.626 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 3/7: 0.1598ms
+02:04:40.626 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 4/7: 0.1287ms
+02:04:40.627 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 5/7: 0.1522ms
+02:04:40.627 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 6/7: 0.119ms
+02:04:40.627 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 7/7: 0.1033ms
+02:04:40.627 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkDijkstra: topology=COMPLETE, V=200
+02:04:40.628 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 1/7: 0.4975ms
+02:04:40.628 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 2/7: 0.3688ms
+02:04:40.629 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 3/7: 0.3086ms
+02:04:40.629 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 4/7: 0.2495ms
+02:04:40.629 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 5/7: 0.239ms
+02:04:40.630 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 6/7: 0.2273ms
+02:04:40.630 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 7/7: 0.235ms
+02:04:40.630 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkDijkstra: topology=DAG, V=200
+02:04:40.630 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 1/7: 0.0259ms
+02:04:40.630 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 2/7: 0.0182ms
+02:04:40.630 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 3/7: 0.0143ms
+02:04:40.630 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 4/7: 0.0119ms
+02:04:40.630 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 5/7: 0.011ms
+02:04:40.630 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 6/7: 0.0104ms
+02:04:40.630 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 7/7: 0.0168ms
+02:04:40.630 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- Running DAG-SP vs Dijkstra comparison...
+02:04:40.630 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkDAGvsDAGSP: V=200
+02:04:40.631 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 1/7: Dijkstra=0.0214ms DAG-SP=0.1968ms
+02:04:40.631 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 2/7: Dijkstra=0.0198ms DAG-SP=0.2753ms
+02:04:40.631 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 3/7: Dijkstra=0.0227ms DAG-SP=0.2287ms
+02:04:40.632 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 4/7: Dijkstra=0.0234ms DAG-SP=0.2079ms
+02:04:40.632 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 5/7: Dijkstra=0.0184ms DAG-SP=0.2115ms
+02:04:40.632 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 6/7: Dijkstra=0.0138ms DAG-SP=0.216ms
+02:04:40.632 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 7/7: Dijkstra=0.0119ms DAG-SP=0.1462ms
+02:04:40.633 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- === runFullGraphSuite complete: 8 results ===
+]]></system-out>
+  </testcase>
+  <testcase name="benchmarkMST_timingsPositive" classname="com.graph.GraphBenchmarkEngineTest" time="0.005">
+    <system-out><![CDATA[02:04:40.635 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkMST: topology=SPARSE, V=200, warmup=2, measured=5
+02:04:40.636 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 1/7: Prim=0.0862ms Kruskal=0.2136ms
+02:04:40.636 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 2/7: Prim=0.0678ms Kruskal=0.1935ms
+02:04:40.636 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 3/7: Prim=0.0584ms Kruskal=0.1759ms
+02:04:40.637 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 4/7: Prim=0.067ms Kruskal=0.2163ms
+02:04:40.637 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 5/7: Prim=0.0621ms Kruskal=0.1901ms
+02:04:40.637 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 6/7: Prim=0.0646ms Kruskal=0.1822ms
+02:04:40.638 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 7/7: Prim=0.0578ms Kruskal=0.205ms
+]]></system-out>
+  </testcase>
+  <testcase name="benchmarkMST_complete_resultNotNull" classname="com.graph.GraphBenchmarkEngineTest" time="0.029">
+    <system-out><![CDATA[02:04:40.639 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkMST: topology=COMPLETE, V=200, warmup=2, measured=5
+02:04:40.644 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 1/7: Prim=0.28ms Kruskal=3.7185ms
+02:04:40.648 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 2/7: Prim=0.2613ms Kruskal=3.8639ms
+02:04:40.652 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 3/7: Prim=0.2955ms Kruskal=3.6433ms
+02:04:40.657 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 4/7: Prim=0.2602ms Kruskal=3.6022ms
+02:04:40.660 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 5/7: Prim=0.2445ms Kruskal=3.6108ms
+02:04:40.664 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 6/7: Prim=0.2875ms Kruskal=3.599ms
+02:04:40.668 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 7/7: Prim=0.2678ms Kruskal=3.5757ms
+]]></system-out>
+  </testcase>
+  <testcase name="benchmarkDijkstra_sparse_resultNotNull" classname="com.graph.GraphBenchmarkEngineTest" time="0.003">
+    <system-out><![CDATA[02:04:40.670 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkDijkstra: topology=SPARSE, V=200
+02:04:40.671 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 1/7: 0.0509ms
+02:04:40.671 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 2/7: 0.0485ms
+02:04:40.671 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 3/7: 0.0787ms
+02:04:40.671 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 4/7: 0.0484ms
+02:04:40.672 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 5/7: 0.0419ms
+02:04:40.672 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 6/7: 0.0345ms
+02:04:40.672 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- Dijkstra run 7/7: 0.0281ms
+]]></system-out>
+  </testcase>
+  <testcase name="benchmarkMST_dense_resultNotNull" classname="com.graph.GraphBenchmarkEngineTest" time="0.01">
+    <system-out><![CDATA[02:04:40.673 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkMST: topology=DENSE, V=200, warmup=2, measured=5
+02:04:40.674 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 1/7: Prim=0.1526ms Kruskal=0.866ms
+02:04:40.676 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 2/7: Prim=0.1492ms Kruskal=0.9392ms
+02:04:40.677 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 3/7: Prim=0.1749ms Kruskal=0.8891ms
+02:04:40.678 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 4/7: Prim=0.1697ms Kruskal=0.9247ms
+02:04:40.679 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 5/7: Prim=0.2285ms Kruskal=0.8497ms
+02:04:40.680 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 6/7: Prim=0.1333ms Kruskal=0.8499ms
+02:04:40.682 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 7/7: Prim=0.1303ms Kruskal=0.8343ms
+]]></system-out>
+  </testcase>
+  <testcase name="benchmarkMST_sparse_resultNotNull" classname="com.graph.GraphBenchmarkEngineTest" time="0.003">
+    <system-out><![CDATA[02:04:40.683 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkMST: topology=SPARSE, V=200, warmup=2, measured=5
+02:04:40.684 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 1/7: Prim=0.0606ms Kruskal=0.1845ms
+02:04:40.684 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 2/7: Prim=0.0791ms Kruskal=0.2168ms
+02:04:40.684 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 3/7: Prim=0.0693ms Kruskal=0.2108ms
+02:04:40.685 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 4/7: Prim=0.0677ms Kruskal=0.2115ms
+02:04:40.685 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 5/7: Prim=0.0771ms Kruskal=0.2127ms
+02:04:40.685 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 6/7: Prim=0.1072ms Kruskal=0.2477ms
+02:04:40.686 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 7/7: Prim=0.0807ms Kruskal=0.1874ms
+]]></system-out>
+  </testcase>
+  <testcase name="benchmarkDAGvsDAGSP_resultNotNull" classname="com.graph.GraphBenchmarkEngineTest" time="0.003">
+    <system-out><![CDATA[02:04:40.688 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkDAGvsDAGSP: V=200
+02:04:40.688 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 1/7: Dijkstra=0.0324ms DAG-SP=0.2343ms
+02:04:40.689 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 2/7: Dijkstra=0.0328ms DAG-SP=0.1557ms
+02:04:40.689 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 3/7: Dijkstra=0.0245ms DAG-SP=0.1249ms
+02:04:40.689 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 4/7: Dijkstra=0.0192ms DAG-SP=0.1403ms
+02:04:40.689 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 5/7: Dijkstra=0.0153ms DAG-SP=0.1499ms
+02:04:40.690 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 6/7: Dijkstra=0.0332ms DAG-SP=0.1432ms
+02:04:40.690 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- DAGvsDAGSP run 7/7: Dijkstra=0.0508ms DAG-SP=0.1625ms
+]]></system-out>
+  </testcase>
+  <testcase name="benchmarkMST_primAndKruskalNamesCorrect" classname="com.graph.GraphBenchmarkEngineTest" time="0.004">
+    <system-out><![CDATA[02:04:40.692 [main] INFO com.graph.benchmark.GraphBenchmarkEngine -- benchmarkMST: topology=SPARSE, V=200, warmup=2, measured=5
+02:04:40.693 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 1/7: Prim=0.1251ms Kruskal=0.2254ms
+02:04:40.693 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 2/7: Prim=0.0819ms Kruskal=0.2399ms
+02:04:40.694 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 3/7: Prim=0.0811ms Kruskal=0.2402ms
+02:04:40.694 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 4/7: Prim=0.0773ms Kruskal=0.258ms
+02:04:40.695 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 5/7: Prim=0.0738ms Kruskal=0.2237ms
+02:04:40.695 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 6/7: Prim=0.0691ms Kruskal=0.2203ms
+02:04:40.695 [main] DEBUG com.graph.benchmark.GraphBenchmarkEngine -- MST run 7/7: Prim=0.0814ms Kruskal=0.2432ms
+]]></system-out>
+  </testcase>
+</testsuite>

@@ -341,6 +341,9 @@ public class GraphDashboardController implements Initializable {
         task.setOnSucceeded(e -> {
             unbindProgress();
             globalProgress.setProgress(0);
+            if (!taBenchmarkResults.getText().isEmpty()) {
+                taBenchmarkResults.appendText("\n" + "=".repeat(64) + "\n");
+            }
             taBenchmarkResults.appendText(task.getValue());
             refreshPool();
             lblStatus.setText("benchmark done for \"" + bp.getLabel() + "\"");
@@ -415,7 +418,7 @@ public class GraphDashboardController implements Initializable {
                 long    used  = (rt.totalMemory() - rt.freeMemory()) / (1024 * 1024);
                 long    total = rt.totalMemory() / (1024 * 1024);
                 Platform.runLater(() -> lblMemory.setText("Heap: " + used + " / " + total + " MB"));
-                try { Thread.sleep(3_000); } catch (InterruptedException e) { break; }
+                try { Thread.sleep(1500); } catch (InterruptedException e) { break; }
             }
         }, "memory-monitor");
         t.setDaemon(true);
@@ -452,7 +455,7 @@ public class GraphDashboardController implements Initializable {
 
             String base = "-fx-font-size: 10; -fx-padding: 2 6; -fx-background-radius: 4;";
             switch (bp.getCurrentStage()) {
-                case FRESH       -> { lblBadge.setText("NO GRAPH");   lblBadge.setStyle(base + " -fx-background-color: #d1d5db; -fx-text-fill: #374151;"); }
+                case FRESH       -> { lblBadge.setText("NEEDS BUILD");lblBadge.setStyle(base + " -fx-background-color: #f59e0b; -fx-text-fill: #0f1117;"); }
                 case GRAPH_READY -> { lblBadge.setText("READY");      lblBadge.setStyle(base + " -fx-background-color: #bbf7d0; -fx-text-fill: #166534;"); }
                 case BENCHMARKED -> { lblBadge.setText("BENCHMARKED");lblBadge.setStyle(base + " -fx-background-color: #bfdbfe; -fx-text-fill: #1e3a5f;"); }
             }

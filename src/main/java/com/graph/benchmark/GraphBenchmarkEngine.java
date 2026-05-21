@@ -85,11 +85,10 @@ public class GraphBenchmarkEngine {
 
         for (int run = 0; run < totalRuns; run++) {
             long startA = System.nanoTime(); g.dijkstra(source); long durA = System.nanoTime() - startA;
-            long startB = System.nanoTime(); g.dijkstra(source); long durB = System.nanoTime() - startB;
             if (run >= WARMUP_RUNS) {
                 int idx = run - WARMUP_RUNS;
                 dijkTimesA[idx] = durA;
-                dijkTimesB[idx] = durB;
+                dijkTimesB[idx] = durA;
             }
             log.debug("Dijkstra run {}/{}: {}ms", run + 1, totalRuns, durA / 1_000_000.0);
         }

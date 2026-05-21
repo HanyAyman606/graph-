@@ -66,6 +66,9 @@ public class GraphBenchmarkResult {
 
     // speedup > 1 means algoB is faster, useful for DAG-SP vs Dijkstra comparison
     public double getSpeedupBoverA() {
+        if (benchType == GraphBenchmarkType.SSSP_GENERAL) {
+            return Double.NaN;
+        }
         if (algoBMean == 0) return Double.NaN;
         return algoAMean / algoBMean;
     }
@@ -89,8 +92,11 @@ public class GraphBenchmarkResult {
         sb.append(String.format(" %-12s | %-12.3f | %-12.3f\n", "Std Dev", getAlgoAStdDevMs(), getAlgoBStdDevMs()));
         sb.append(String.format("-------------------------------------------------\n"));
         double sp = getSpeedupBoverA();
-        if (Double.isNaN(sp)) {
-            sb.append(" >> Speedup: N/A (algoBMean was zero)\n");
+        if (benchType == GraphBenchmarkType.SSSP_GENERAL || Double.isNaN(sp)) {
+            sb.append(" >> Speedup: N/A\n");
+        } else if (benchType == GraphBenchmarkType.SSSP_DAG) {
+            sb.append(String.format(" >> DAG-SP speedup over Dijkstra: %.2fx  (%.1f%%)\n",
+                    sp, getSpeedupPercentage()));
         } else {
             sb.append(String.format(" >> Speedup (%s over %s): %.2fx  (%.1f%%)\n",
                     algoBName, algoAName, sp, getSpeedupPercentage()));

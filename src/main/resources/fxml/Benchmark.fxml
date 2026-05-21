@@ -24,6 +24,7 @@
             <Spinner fx:id="spinnerRuns" prefWidth="75"/>
             
             <Button fx:id="btnRunAll" text="Run Full Suite" onAction="#onRunAllClicked" styleClass="btn-primary"/>
+            <Button fx:id="btnClear" text="Clear" onAction="#onClearClicked" styleClass="btn-danger"/>
             
             <Region HBox.hgrow="ALWAYS"/>
             

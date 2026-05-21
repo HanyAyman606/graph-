@@ -63,12 +63,21 @@ public class GraphBenchmarkController implements Initializable {
                 new SimpleStringProperty(String.format("%.2f ms", cell.getValue().getAlgoAMeanMs())));
 
         // colRbtTime is now algo B (Kruskal or DAG-SP)
-        colRbtTime.setCellValueFactory(cell ->
-                new SimpleStringProperty(String.format("%.2f ms", cell.getValue().getAlgoBMeanMs())));
+        colRbtTime.setCellValueFactory(cell -> {
+            if (cell.getValue().getBenchType() == GraphBenchmarkType.SSSP_GENERAL) {
+                return new SimpleStringProperty("N/A");
+            }
+            return new SimpleStringProperty(String.format("%.2f ms", cell.getValue().getAlgoBMeanMs()));
+        });
 
         // speedup same concept as before, just different algorithms
-        colSpeedup.setCellValueFactory(cell ->
-                new SimpleStringProperty(String.format("%.2fx", cell.getValue().getSpeedupBoverA())));
+        colSpeedup.setCellValueFactory(cell -> {
+            double sp = cell.getValue().getSpeedupBoverA();
+            if (Double.isNaN(sp) || cell.getValue().getBenchType() == GraphBenchmarkType.SSSP_GENERAL) {
+                return new SimpleStringProperty("N/A");
+            }
+            return new SimpleStringProperty(String.format("%.2fx", sp));
+        });
 
         resultsTable.setItems(tableData);
     }

@@ -14,8 +14,8 @@
         <HBox styleClass="top-bar" alignment="CENTER_LEFT" spacing="12">
             <padding><Insets top="10" right="16" bottom="10" left="16"/></padding>
 
-            <Label text="Tree Lab" styleClass="wordmark"/>
-            <Label text="BST &amp; RBT Dashboard" styleClass="wordmark-sub"/>
+            <Label text="Graph Lab" styleClass="wordmark"/>
+            <Label text="Graph Algorithm Benchmarker" styleClass="wordmark-sub"/>
 
             <Region HBox.hgrow="ALWAYS"/>
 

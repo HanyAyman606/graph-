@@ -34,6 +34,7 @@ public class GraphChartBuilder {
         BarChart<String, Number> chart = new BarChart<>(xAxis, yAxis);
         chart.setTitle("MST: Prim vs Kruskal");
         chart.setAnimated(false);
+        chart.setPrefHeight(320);
 
         if (mstResults.isEmpty()) return chart;
 
@@ -72,6 +73,7 @@ public class GraphChartBuilder {
         BarChart<String, Number> chart = new BarChart<>(xAxis, yAxis);
         chart.setTitle("Dijkstra SSSP across Graph Densities");
         chart.setAnimated(false);
+        chart.setPrefHeight(320);
 
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("Dijkstra");
@@ -103,6 +105,7 @@ public class GraphChartBuilder {
         BarChart<String, Number> timeChart = new BarChart<>(xAxis1, yAxis1);
         timeChart.setTitle("DAG: Dijkstra vs DAG Shortest Path");
         timeChart.setAnimated(false);
+        timeChart.setPrefHeight(320);
 
         XYChart.Series<String, Number> timeSeries = new XYChart.Series<>();
         timeSeries.setName("Time (ms)");
@@ -122,6 +125,7 @@ public class GraphChartBuilder {
         BarChart<String, Number> speedupChart = new BarChart<>(xAxis2, yAxis2);
         speedupChart.setTitle("Speedup of DAG-SP over Dijkstra");
         speedupChart.setAnimated(false);
+        speedupChart.setPrefHeight(320);
 
         XYChart.Series<String, Number> speedupSeries = new XYChart.Series<>();
         speedupSeries.setName("Speedup");
@@ -136,6 +140,7 @@ public class GraphChartBuilder {
 
         // wrap both charts in a VBox so they render together
         VBox box = new VBox(16, timeChart, speedupChart);
+        box.setFillWidth(true);
         return box;
     }
 }
