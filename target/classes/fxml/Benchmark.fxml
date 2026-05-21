@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.trees.ui.benchmark.BenchmarkController"
+            fx:controller="com.graph.ui.benchmark.GraphBenchmarkController"
             styleClass="root-pane" prefWidth="1200" prefHeight="800">
 
     <top>
@@ -44,8 +44,8 @@
                     <columns>
                         <TableColumn fx:id="colType" text="Operation" prefWidth="110"/>
                         <TableColumn fx:id="colMethod" text="Distribution" prefWidth="140"/>
-                        <TableColumn fx:id="colBstTime" text="BST Time" prefWidth="90"/>
-                        <TableColumn fx:id="colRbtTime" text="RBT Time" prefWidth="90"/>
+                        <TableColumn fx:id="colBstTime" text="Algo A Time" prefWidth="90"/>
+                        <TableColumn fx:id="colRbtTime" text="Algo B Time" prefWidth="90"/>
                         <TableColumn fx:id="colSpeedup" text="Speedup" prefWidth="80"/>
                     </columns>
                 </TableView>

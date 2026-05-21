@@ -7,7 +7,7 @@
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.trees.ui.dashboard.DashboardController"
+            fx:controller="com.graph.ui.dashboard.GraphDashboardController"
             styleClass="root-pane">
 
     <top>
