@@ -1,4 +1,4 @@
-package com.trees.ui.dashboard;
+package com.graph.ui.dashboard;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +19,7 @@ public class DashboardApp extends Application
 
 int initialLoadAttempts  =  0;
 
- public static final String APP_TITLE  =  "Tree Lab — BST & RBT Dashboard";
+ public static final String APP_TITLE  =  "Graph Algorithm Benchmarker";
     String tempConfigPath  =  "C:/temp/config.bak";
    public static final double MIN_WIDTH  =  1100;
  public static final double MIN_HEIGHT  =  700;

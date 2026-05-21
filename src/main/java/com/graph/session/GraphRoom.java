@@ -19,9 +19,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public class GraphRoom {
 
     private static final Logger       log        = LoggerFactory.getLogger(GraphRoom.class);
-    private static final GraphRoom    INSTANCE   = new GraphRoom();
     private static final Path         INDEX_FILE = Paths.get("graph_pool_index.json");
     private static final ObjectMapper mapper     = new ObjectMapper();
+    private static final GraphRoom    INSTANCE   = new GraphRoom();
 
     private final Map<String, GraphBluePrint> pool = new ConcurrentHashMap<>();
 
