@@ -1,0 +1,8 @@
+[ {
+  "label" : "graph1",
+  "topology" : "SPARSE",
+  "vertCount" : 5000,
+  "fixedSeed" : 1685957280,
+  "builtAt" : 1779405463795,
+  "currentStage" : "GRAPH_READY"
+} ]

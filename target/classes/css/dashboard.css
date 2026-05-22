@@ -305,7 +305,7 @@
 
 .benchmark-results {
     -fx-control-inner-background: #0c1020;
-    -fx-background-color: #0c1020, repeating-linear-gradient(from 0px 0px to 0px 3px, #0c1020, #0c1020 2px, #080b16 2px, #080b16 3px);
+    -fx-background-color: #0c1020;
     -fx-text-fill: #22c55e;
     -fx-font-family: "JetBrains Mono", "Courier New", monospace;
     -fx-font-size: 12px;
@@ -313,11 +313,11 @@
     -fx-padding: 8;
     -fx-wrap-text: false;
 }
-.benchmark-results .viewport {
-    -fx-background-color: transparent;
-}
 .benchmark-results .content {
-    -fx-background-color: transparent;
+    -fx-background-color: #0c1020;
+}
+.benchmark-results .viewport {
+    -fx-background-color: #0c1020;
 }
 
 .combo-box-base, .spinner {

@@ -83,7 +83,7 @@ public class GraphBenchmarkResult {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(String.format("=================================================\n"));
-        sb.append(String.format(" GRAPH BENCHMARK: %s | %s | V=%,d\n", benchType, topology, vertexCount));
+        sb.append(String.format(" GRAPH BENCHMARK: %s | %s | V=%,d | Runs=%d\n", benchType, topology, vertexCount, algoATimesNanos.length));
         sb.append(String.format("=================================================\n"));
         sb.append(String.format(" %-12s | %-12s | %-12s\n", "Metric", algoAName + " (ms)", algoBName + " (ms)"));
         sb.append(String.format(" %-12s | %-12s | %-12s\n", "------------", "------------", "------------"));
