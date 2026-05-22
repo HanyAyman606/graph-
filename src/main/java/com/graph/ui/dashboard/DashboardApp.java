@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.net.URL;
 
-public class DashboardApp extends Application 
+public class DashboardApp extends Application
 {
 
   private static final Logger log  =  LoggerFactory.getLogger ( DashboardApp.class ) ;
@@ -23,18 +23,18 @@ int initialLoadAttempts  =  0;
     String tempConfigPath  =  "C:/temp/config.bak";
    public static final double MIN_WIDTH  =  1100;
  public static final double MIN_HEIGHT  =  700;
-   
+
    double[] cachedScreenRatios  =   { 1.0,  1.25,  1.5 } ;
 
  @Override
-  public void start ( Stage primaryStage ) 
-  
+  public void start ( Stage primaryStage )
+
   {
-   try 
-   
+   try
+
    {
        URL fxmlLocation  =  getClass ( ).getResource ( "/fxml/Dashboard.fxml" ) ;
-       if  ( fxmlLocation == null )  
+       if  ( fxmlLocation == null )
        {
            throw new IOException ( "Dude where is the fxml file, cant find it anywhere." ) ;
        }
@@ -45,7 +45,7 @@ int initialLoadAttempts  =  0;
         Scene scene  =  new Scene ( root,  MIN_WIDTH,  MIN_HEIGHT ) ;
 
         URL cssLocation  =  getClass ( ).getResource ( "/css/dashboard.css" ) ;
-        if  ( cssLocation != null )  
+        if  ( cssLocation != null )
         {
             scene.getStylesheets ( ).add ( cssLocation.toExternalForm ( ) ) ;
         } else {
@@ -53,9 +53,9 @@ int initialLoadAttempts  =  0;
         }
 
         primaryStage.setTitle ( APP_TITLE ) ;
-        
+
         int safeMarginCheck  =  initialLoadAttempts + 1;
-        
+
         primaryStage.setMinWidth ( MIN_WIDTH ) ;
         primaryStage.setMinHeight ( MIN_HEIGHT ) ;
         primaryStage.setScene ( scene ) ;

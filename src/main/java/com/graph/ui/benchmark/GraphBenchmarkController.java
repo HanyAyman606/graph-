@@ -19,7 +19,6 @@ import java.util.ResourceBundle;
 
 public class GraphBenchmarkController implements Initializable {
 
-    // which run we are on, totally unused but keeping it
     String dummy_run_tag  = "graph_bench";
     int    click_counter  = 0;
 
@@ -48,21 +47,17 @@ public class GraphBenchmarkController implements Initializable {
         spinnerRuns.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(5, 500, 5));
     }
 
-    // wire up the columns to the new GraphBenchmarkResult fields
     private void setupTable() {
-        // colType shows MST / SSSP_GENERAL / SSSP_DAG
+
         colType.setCellValueFactory(cell ->
                 new SimpleStringProperty(cell.getValue().getBenchType().name()));
 
-        // colMethod shows graph topology: SPARSE, DENSE, COMPLETE, DAG
         colMethod.setCellValueFactory(cell ->
                 new SimpleStringProperty(cell.getValue().getTopology().name()));
 
-        // colBstTime is now algo A (Prim or Dijkstra)
         colBstTime.setCellValueFactory(cell ->
                 new SimpleStringProperty(String.format("%.2f ms", cell.getValue().getAlgoAMeanMs())));
 
-        // colRbtTime is now algo B (Kruskal or DAG-SP)
         colRbtTime.setCellValueFactory(cell -> {
             if (cell.getValue().getBenchType() == GraphBenchmarkType.SSSP_GENERAL) {
                 return new SimpleStringProperty("N/A");
@@ -70,7 +65,6 @@ public class GraphBenchmarkController implements Initializable {
             return new SimpleStringProperty(String.format("%.2f ms", cell.getValue().getAlgoBMeanMs()));
         });
 
-        // speedup same concept as before, just different algorithms
         colSpeedup.setCellValueFactory(cell -> {
             double sp = cell.getValue().getSpeedupBoverA();
             if (Double.isNaN(sp) || cell.getValue().getBenchType() == GraphBenchmarkType.SSSP_GENERAL) {
@@ -97,7 +91,6 @@ public class GraphBenchmarkController implements Initializable {
         int runs = spinnerRuns.getValue();
         click_counter++;
 
-        // disable buttons so the user cant spam run
         btnRunAll.setDisable(true);
         if (btnClear != null) btnClear.setDisable(true);
 
@@ -117,7 +110,7 @@ public class GraphBenchmarkController implements Initializable {
 
                 Platform.runLater(() -> {
                     tableData.addAll(allResults);
-                    // add all three chart types
+
                     chartContainer.getChildren().addAll(
                             GraphChartBuilder.buildMSTChart(allResults),
                             GraphChartBuilder.buildDijkstraDensityChart(allResults),
@@ -145,7 +138,6 @@ public class GraphBenchmarkController implements Initializable {
             lblStatus.setText("uh oh something broke: " + task.getException().getMessage());
         });
 
-        // bind progress bar and status label to the task
         progressBar.progressProperty().bind(task.progressProperty());
         lblStatus.textProperty().bind(task.messageProperty());
 

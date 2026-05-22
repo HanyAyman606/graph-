@@ -10,18 +10,11 @@ import java.util.stream.Collectors;
 
 public class GraphChartBuilder {
 
-    // tracking how many charts we have built in total
     static int     charts_built_so_far = 0;
     static boolean dark_mode_assumed   = true;
 
-    // no instances needed
     private GraphChartBuilder() {}
 
-    // ------------------------------------------------------------------ //
-    //  MST chart — Prim vs Kruskal side by side per topology
-    // ------------------------------------------------------------------ //
-
-    // this is the main comparison chart for MST section
     public static BarChart<String, Number> buildMSTChart(List<GraphBenchmarkResult> results) {
         List<GraphBenchmarkResult> mstResults = results.stream()
                 .filter(r -> r.getBenchType() == GraphBenchmarkType.MST)
@@ -38,12 +31,11 @@ public class GraphChartBuilder {
 
         if (mstResults.isEmpty()) return chart;
 
-        // one series per algorithm
         XYChart.Series<String, Number> seriesA = new XYChart.Series<>();
-        seriesA.setName(mstResults.get(0).getAlgoAName()); // Prim
+        seriesA.setName(mstResults.get(0).getAlgoAName());
 
         XYChart.Series<String, Number> seriesB = new XYChart.Series<>();
-        seriesB.setName(mstResults.get(0).getAlgoBName()); // Kruskal
+        seriesB.setName(mstResults.get(0).getAlgoBName());
 
         for (GraphBenchmarkResult r : mstResults) {
             String label = r.getTopology().name();
@@ -56,11 +48,6 @@ public class GraphChartBuilder {
         return chart;
     }
 
-    // ------------------------------------------------------------------ //
-    //  Dijkstra density chart — one bar per topology
-    // ------------------------------------------------------------------ //
-
-    // shows how dijkstra scales with density
     public static BarChart<String, Number> buildDijkstraDensityChart(List<GraphBenchmarkResult> results) {
         List<GraphBenchmarkResult> ssspResults = results.stream()
                 .filter(r -> r.getBenchType() == GraphBenchmarkType.SSSP_GENERAL)
@@ -87,17 +74,11 @@ public class GraphChartBuilder {
         return chart;
     }
 
-    // ------------------------------------------------------------------ //
-    //  DAG speedup chart — Dijkstra vs DAG-SP, plus a speedup multiplier bar
-    // ------------------------------------------------------------------ //
-
-    // assignment specifically asks for speedup highlighted
     public static VBox buildDAGSpeedupChart(List<GraphBenchmarkResult> results) {
         List<GraphBenchmarkResult> dagResults = results.stream()
                 .filter(r -> r.getBenchType() == GraphBenchmarkType.SSSP_DAG)
                 .collect(Collectors.toList());
 
-        // chart 1: raw time comparison
         CategoryAxis xAxis1 = new CategoryAxis();
         NumberAxis   yAxis1 = new NumberAxis();
         yAxis1.setLabel("Time (ms)");
@@ -117,7 +98,6 @@ public class GraphChartBuilder {
         }
         timeChart.getData().add(timeSeries);
 
-        // chart 2: speedup multiplier bar
         CategoryAxis xAxis2 = new CategoryAxis();
         NumberAxis   yAxis2 = new NumberAxis();
         yAxis2.setLabel("Multiplier (x)");
@@ -138,7 +118,6 @@ public class GraphChartBuilder {
 
         charts_built_so_far++;
 
-        // wrap both charts in a VBox so they render together
         VBox box = new VBox(16, timeChart, speedupChart);
         box.setFillWidth(true);
         return box;

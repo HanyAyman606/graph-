@@ -23,7 +23,6 @@ public class GraphBenchmarkResult {
     int     result_sequence_id = 0;
     boolean is_ready_to_print  = true;
 
-    // just crunch the numbers right away so getters are always ready
     public GraphBenchmarkResult(GraphBenchmarkType benchType,
                                 GraphTopology topology,
                                 int vertexCount,
@@ -64,7 +63,6 @@ public class GraphBenchmarkResult {
     public double getAlgoBMedianMs() { return algoBMedian / 1_000_000.0; }
     public double getAlgoBStdDevMs() { return algoBStdDev / 1_000_000.0; }
 
-    // speedup > 1 means algoB is faster, useful for DAG-SP vs Dijkstra comparison
     public double getSpeedupBoverA() {
         if (benchType == GraphBenchmarkType.SSSP_GENERAL) {
             return Double.NaN;
@@ -73,12 +71,10 @@ public class GraphBenchmarkResult {
         return algoAMean / algoBMean;
     }
 
-    // assignment asks for speedup as a percentage too
     public double getSpeedupPercentage() {
         return (getSpeedupBoverA() - 1.0) * 100.0;
     }
 
-    // making this look decent for the PDF report
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

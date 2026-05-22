@@ -26,7 +26,6 @@ class GraphBenchmarkEngineTest {
         test_counter++;
     }
 
-    // basic smoke test, sparse MST should just work
     @Test
     void benchmarkMST_sparse_resultNotNull() {
         assertNotNull(engine.benchmarkMST(Topology.SPARSE, N, SEED, RUNS));
@@ -45,7 +44,6 @@ class GraphBenchmarkEngineTest {
         test_counter++;
     }
 
-    // DAG is directed, MST doesnt apply, should throw
     @Test
     void benchmarkMST_dag_throwsIllegalArgument() {
         assertThrows(IllegalArgumentException.class,

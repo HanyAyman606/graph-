@@ -29,16 +29,11 @@ public class GraphDashboardController implements Initializable {
 
     private static final Logger log = LoggerFactory.getLogger(GraphDashboardController.class);
 
-    // humanized unused fields
     int     dashboard_load_count = 0;
     boolean pool_is_dirty        = false;
 
     private final GraphBenchmarkEngine        engine    = new GraphBenchmarkEngine();
     private final ObservableList<GraphBluePrint> poolItems = FXCollections.observableArrayList();
-
-    // ------------------------------------------------------------------ //
-    //  FXML bindings — all fx:id names must match Dashboard.fxml exactly
-    // ------------------------------------------------------------------ //
 
     @FXML private Label       lblStatus;
     @FXML private Label       lblMemory;
@@ -53,23 +48,19 @@ public class GraphDashboardController implements Initializable {
     @FXML private VBox      noTreesPane;
     @FXML private VBox      operationsPane;
 
-    // btnCreateTrees now means "Build Graph", fxml id stays same
     @FXML private Button btnCreateTrees;
 
-    // reusing the old height labels for topology info, close enough
     @FXML private Label lblSelectedName;
-    @FXML private Label lblBstHeight;    // shows "Topology: X"
-    @FXML private Label lblRbtHeight;    // shows "Seed: N"
+    @FXML private Label lblBstHeight;
+    @FXML private Label lblRbtHeight;
     @FXML private Label lblArraySize;
     @FXML private Label lblLifecycle;
 
-    // these exist in fxml, hide them — graph mode doesnt use value input
     @FXML private TextField tfValue;
     @FXML private Button    btnInsert;
     @FXML private Button    btnDelete;
     @FXML private Button    btnContains;
 
-    // log table fields — bound but hidden, fxml expects them
     @FXML private TableView<?>    logTable;
     @FXML private TableColumn<?,?> colOpId;
     @FXML private TableColumn<?,?> colType;
@@ -80,7 +71,6 @@ public class GraphDashboardController implements Initializable {
     @FXML private TableColumn<?,?> colRbtTime;
     @FXML private TableColumn<?,?> colSpeedup;
 
-    // benchmark panel at the bottom
     @FXML private ComboBox<String> cboBenchmarkType;
     @FXML private Spinner<Integer> spinnerRuns;
     @FXML private Button           btnRunBenchmark;
@@ -94,17 +84,12 @@ public class GraphDashboardController implements Initializable {
         showPane(placeholderPane);
         scheduleMemoryUpdate();
         if (btnCreateTrees != null) btnCreateTrees.setText("Build Graph");
-        // hide the old tree operation controls
+
         hideOldTreeControls();
         dashboard_load_count++;
         log.debug("GraphDashboardController initialized");
     }
 
-    // ------------------------------------------------------------------ //
-    //  Pool list
-    // ------------------------------------------------------------------ //
-
-    // wire pool list to our GraphBluePrint items
     private void setupPoolList() {
         poolListView.setItems(poolItems);
         poolListView.setCellFactory(lv -> new GraphBluePrintCell());
@@ -112,14 +97,10 @@ public class GraphDashboardController implements Initializable {
                 .addListener((obs, old, bp) -> onPoolSelectionChanged(bp));
     }
 
-    // ------------------------------------------------------------------ //
-    //  Generate dialog — also builds the graph right away
-    // ------------------------------------------------------------------ //
-
     @FXML
     private void onGenerateClicked() {
         showGenerateDialog().ifPresent(bp -> {
-            // building big complete graphs takes a few seconds so background thread it
+
             Task<Void> task = new Task<>() {
                 @Override
                 protected Void call() {
@@ -196,10 +177,6 @@ public class GraphDashboardController implements Initializable {
         return dialog.showAndWait();
     }
 
-    // ------------------------------------------------------------------ //
-    //  Remove
-    // ------------------------------------------------------------------ //
-
     @FXML
     private void onRemoveClicked() {
         GraphBluePrint bp = poolListView.getSelectionModel().getSelectedItem();
@@ -219,10 +196,6 @@ public class GraphDashboardController implements Initializable {
             });
     }
 
-    // ------------------------------------------------------------------ //
-    //  Pool selection
-    // ------------------------------------------------------------------ //
-
     private void onPoolSelectionChanged(GraphBluePrint bp) {
         if (bp == null) { showPane(placeholderPane); return; }
         if (bp.getCurrentStage() == Stage.FRESH) {
@@ -233,7 +206,6 @@ public class GraphDashboardController implements Initializable {
         }
     }
 
-    // reusing the old height labels for topology info, close enough
     private void refreshInfoRibbon(GraphBluePrint bp) {
         lblSelectedName.setText(bp.getLabel());
         lblArraySize.setText("V = " + bp.getVertCount());
@@ -242,13 +214,9 @@ public class GraphDashboardController implements Initializable {
         lblLifecycle.setText(bp.getCurrentStage().name());
     }
 
-    // ------------------------------------------------------------------ //
-    //  Build graph (btnCreateTrees now means this)
-    // ------------------------------------------------------------------ //
-
     @FXML
     private void onCreateTreesClicked() {
-        // btnCreateTrees now means "build the graph", fxml id stays same
+
         GraphBluePrint bp = poolListView.getSelectionModel().getSelectedItem();
         if (bp == null) return;
         if (bp.hasGraph()) { showError("already built", "this graph was already built"); return; }
@@ -278,10 +246,6 @@ public class GraphDashboardController implements Initializable {
         new Thread(task, "build-graph").start();
     }
 
-    // ------------------------------------------------------------------ //
-    //  Benchmark panel
-    // ------------------------------------------------------------------ //
-
     private void setupBenchmarkPanel() {
         cboBenchmarkType.setItems(FXCollections.observableArrayList(
                 "FULL SUITE", "MST ONLY", "SSSP ONLY", "DAG COMPARE"));
@@ -291,7 +255,6 @@ public class GraphDashboardController implements Initializable {
                 "-fx-font-family: 'Consolas', 'Courier New', monospace; -fx-font-size: 12px;");
     }
 
-    // the actual meat of the whole app, everything else was setup for this
     @FXML
     private void onRunBenchmarkClicked() {
         GraphBluePrint bp = poolListView.getSelectionModel().getSelectedItem();
@@ -362,15 +325,10 @@ public class GraphDashboardController implements Initializable {
         taBenchmarkResults.clear();
     }
 
-    // fxml references these, stub them so injection doesnt blow up
     @FXML private void onInsertClicked()   {}
     @FXML private void onDeleteClicked()   {}
     @FXML private void onContainsClicked() {}
     @FXML private void onClearLogClicked() {}
-
-    // ------------------------------------------------------------------ //
-    //  Helpers
-    // ------------------------------------------------------------------ //
 
     private void refreshPool() {
         poolItems.setAll(GraphRoom.getInstance().getAll());
@@ -424,10 +382,6 @@ public class GraphDashboardController implements Initializable {
         t.setDaemon(true);
         t.start();
     }
-
-    // ------------------------------------------------------------------ //
-    //  Pool list cell
-    // ------------------------------------------------------------------ //
 
     private static class GraphBluePrintCell extends ListCell<GraphBluePrint> {
 

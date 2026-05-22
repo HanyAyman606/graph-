@@ -14,13 +14,11 @@ public class Edge implements Comparable<Edge> {
         this.weight      = weight;
     }
 
-    // kruskal needs lightest edges first so we sort by weight here
     @Override
     public int compareTo(Edge otherEdge) {
         return Integer.compare(this.weight, otherEdge.weight);
     }
 
-    // just for debugging honestly
     @Override
     public String toString() {
         return "Edge(" + source + "->" + destination + ", w=" + weight + ")";

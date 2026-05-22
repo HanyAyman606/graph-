@@ -23,11 +23,6 @@ public class GraphBenchmarkEngine {
     boolean graphs_cached       = false;
     int     suite_run_count     = 0;
 
-    // ------------------------------------------------------------------ //
-    //  benchmarkMST — Prim vs Kruskal
-    // ------------------------------------------------------------------ //
-
-    // times prim and kruskal on the same graph instance
     public GraphBenchmarkResult benchmarkMST(Topology topology, int vertices,
                                              long seed, int measuredRuns) {
         if (topology == Topology.DAG) {
@@ -40,13 +35,11 @@ public class GraphBenchmarkEngine {
         log.info("benchmarkMST: topology={}, V={}, warmup={}, measured={}",
                 topology, vertices, WARMUP_RUNS, measuredRuns);
 
-        // generate once, reuse for both algorithms — spec says same graph instance
         Graph g = GraphGenerator.generate(topology, vertices, seed);
 
         long[] primTimes    = new long[measuredRuns];
         long[] kruskalTimes = new long[measuredRuns];
 
-        // warmup runs let the JIT compiler warm up before we start measuring
         for (int run = 0; run < totalRuns; run++) {
             long startP  = System.nanoTime(); g.primMST();    long primDur    = System.nanoTime() - startP;
             long startK  = System.nanoTime(); g.kruskalMST(); long kruskalDur = System.nanoTime() - startK;
@@ -64,11 +57,6 @@ public class GraphBenchmarkEngine {
                 vertices, "Prim", "Kruskal", primTimes, kruskalTimes);
     }
 
-    // ------------------------------------------------------------------ //
-    //  benchmarkDijkstra — density comparison
-    // ------------------------------------------------------------------ //
-
-    // for the density comparison we just run dijkstra on each topology separately
     public GraphBenchmarkResult benchmarkDijkstra(Topology topology, int vertices,
                                                   long seed, int measuredRuns) {
         if (measuredRuns < DEFAULT_MEASURED_RUNS) measuredRuns = DEFAULT_MEASURED_RUNS;
@@ -77,7 +65,6 @@ public class GraphBenchmarkEngine {
 
         Graph g = GraphGenerator.generate(topology, vertices, seed);
 
-        // random source so we dont always start from 0, seed+99 keeps it reproducible
         int source = new Random(seed + 99).nextInt(vertices);
 
         long[] dijkTimesA = new long[measuredRuns];
@@ -98,11 +85,6 @@ public class GraphBenchmarkEngine {
                 vertices, "Dijkstra", "Dijkstra", dijkTimesA, dijkTimesB);
     }
 
-    // ------------------------------------------------------------------ //
-    //  benchmarkDAGvsDAGSP — the interesting one
-    // ------------------------------------------------------------------ //
-
-    // this is the interesting comparison — linear DAG-SP vs Dijkstra on a DAG
     public GraphBenchmarkResult benchmarkDAGvsDAGSP(int vertices, long seed, int measuredRuns) {
         if (measuredRuns < DEFAULT_MEASURED_RUNS) measuredRuns = DEFAULT_MEASURED_RUNS;
         int totalRuns = WARMUP_RUNS + measuredRuns;
@@ -126,17 +108,11 @@ public class GraphBenchmarkEngine {
                     run + 1, totalRuns, dijkDur / 1_000_000.0, dagDur / 1_000_000.0);
         }
 
-        // speedup from this result goes straight into the PDF report
         last_benchmark_tick = System.currentTimeMillis();
         return new GraphBenchmarkResult(GraphBenchmarkType.SSSP_DAG, GraphTopology.DAG,
                 vertices, "Dijkstra", "DAG-SP", dijkstraTimes, dagTimes);
     }
 
-    // ------------------------------------------------------------------ //
-    //  runFullGraphSuite — runs everything in one shot
-    // ------------------------------------------------------------------ //
-
-    // runs everything the assignment asks for in one shot
     public List<GraphBenchmarkResult> runFullGraphSuite(int vertices, long seed, int measuredRuns) {
         List<GraphBenchmarkResult> results = new ArrayList<>();
         log.info("=== runFullGraphSuite: V={} seed={} runs={} ===", vertices, seed, measuredRuns);
@@ -160,7 +136,6 @@ public class GraphBenchmarkEngine {
         return results;
     }
 
-    // just converts one enum to the other, nothing exciting
     private GraphTopology mapTopology(Topology t) {
         return switch (t) {
             case SPARSE   -> GraphTopology.SPARSE;

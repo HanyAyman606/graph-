@@ -34,7 +34,6 @@ class GraphTest {
         test_run_counter++;
     }
 
-    // should be fine with any positive vertex count
     @Test
     void constructor_validSize_noException() {
         assertDoesNotThrow(() -> new Graph(1));
@@ -54,7 +53,6 @@ class GraphTest {
         assertThrows(IllegalArgumentException.class, () -> g.addEdge(0, 3, 5));
     }
 
-    // mst on V vertices always has exactly V-1 edges
     @Test
     void primMST_returnsVMinus1Edges() {
         assertEquals(4, undirected.primMST().size());
@@ -82,7 +80,6 @@ class GraphTest {
         assertEquals(10, total);
     }
 
-    // prim and kruskal should always agree on MST weight
     @Test
     void primAndKruskal_agreeTotalWeight() {
         int p = undirected.primMST().stream().mapToInt(e -> e.weight).sum();
@@ -107,7 +104,6 @@ class GraphTest {
         assertEquals(0, undirected.dijkstra(0)[0]);
     }
 
-    // hand-verified: 0->1=1, 0->2=3, 0->3=5, 0->4=6
     @Test
     void dijkstra_correctDistances_smallGraph() {
         int[] dist = undirected.dijkstra(0);
@@ -133,7 +129,6 @@ class GraphTest {
         assertEquals(undirected.dijkstra(0)[1], undirected.dijkstra(1)[0]);
     }
 
-    // hand verified: 0=0, 1=5, 2=2, 3=min(5+3,2+4)=6
     @Test
     void dagShortestPath_correctDistances() {
         int[] dist = dag.dagShortestPath(0);

@@ -36,7 +36,6 @@ public class GraphRoom {
         return INSTANCE;
     }
 
-    // add a blueprint to the pool, throws if label is already taken
     public void add(GraphBluePrint bp) {
         if (pool.containsKey(bp.getLabel())) {
             throw new IllegalArgumentException(
@@ -49,7 +48,6 @@ public class GraphRoom {
         log.debug("GraphRoom: added '{}'", bp.getLabel());
     }
 
-    // remove by label, silently does nothing if not found
     public void remove(String lbl) {
         GraphBluePrint removed = pool.remove(lbl);
         if (removed != null) {
@@ -67,7 +65,6 @@ public class GraphRoom {
         return Collections.unmodifiableList(new ArrayList<>(pool.values()));
     }
 
-    // write the pool to disk so it survives restarts
     private void saveIndex() {
         try {
             List<GraphBluePrintState> stash = new ArrayList<>();
@@ -81,7 +78,6 @@ public class GraphRoom {
         }
     }
 
-    // rebuild pool from last session on startup
     private void loadIndex() {
         if (!Files.exists(INDEX_FILE)) {
             return;

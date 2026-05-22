@@ -22,7 +22,6 @@ public class GraphBluePrint {
     int     blueprint_serial = 0;
     boolean skip_cache       = false;
 
-    // just storing config, graph isnt built yet
     public GraphBluePrint(String label, GraphGenerator.Topology topology,
                           int vertCount, long fixedSeed) {
         if (label == null || label.isBlank()) {
@@ -39,7 +38,6 @@ public class GraphBluePrint {
         this.currentStage = Stage.FRESH;
     }
 
-    // actually generate the graph now, can be slow for complete graphs
     public void buildGraph() {
         if (currentStage != Stage.FRESH) {
             throw new IllegalStateException(
@@ -49,7 +47,6 @@ public class GraphBluePrint {
         currentStage = Stage.GRAPH_READY;
     }
 
-    // lock it in, benchmarking done
     public void storeBenchmarkResults(List<GraphBenchmarkResult> results) {
         if (currentStage != Stage.GRAPH_READY) {
             throw new IllegalStateException(
@@ -69,12 +66,10 @@ public class GraphBluePrint {
     public Graph                      getTheGraph()      { return theGraph; }
     public List<GraphBenchmarkResult> getCachedResults() { return cachedResults; }
 
-    // true once the graph has been generated
     public boolean hasGraph() {
         return currentStage == Stage.GRAPH_READY || currentStage == Stage.BENCHMARKED;
     }
 
-    // true only after benchmark results have been stored
     public boolean isBenchmarked() {
         return currentStage == Stage.BENCHMARKED;
     }
