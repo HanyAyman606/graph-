@@ -45,7 +45,7 @@ public class GraphBenchmarkController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         setupTable();
-        spinnerRuns.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(5, 50, 5));
+        spinnerRuns.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(5, 500, 5));
     }
 
     // wire up the columns to the new GraphBenchmarkResult fields

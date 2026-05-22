@@ -16,7 +16,7 @@ public class GraphBenchmarkEngine {
 
     private static final Logger log = LoggerFactory.getLogger(GraphBenchmarkEngine.class);
 
-    public static final int WARMUP_RUNS          = 2;
+    public static final int WARMUP_RUNS          = 18;
     public static final int DEFAULT_MEASURED_RUNS = 5;
 
     long    last_benchmark_tick = 0L;

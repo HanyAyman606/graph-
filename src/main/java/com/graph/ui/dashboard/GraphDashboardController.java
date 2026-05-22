@@ -286,7 +286,7 @@ public class GraphDashboardController implements Initializable {
         cboBenchmarkType.setItems(FXCollections.observableArrayList(
                 "FULL SUITE", "MST ONLY", "SSSP ONLY", "DAG COMPARE"));
         cboBenchmarkType.setValue("FULL SUITE");
-        spinnerRuns.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(5, 50, 5));
+        spinnerRuns.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(5, 500, 5));
         taBenchmarkResults.setStyle(
                 "-fx-font-family: 'Consolas', 'Courier New', monospace; -fx-font-size: 12px;");
     }

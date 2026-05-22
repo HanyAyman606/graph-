@@ -2,33 +2,22 @@ package com.graph.core.graphsekelton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.PriorityQueue;
-import java.util.ArrayDeque;
 
 public class Graph implements GraphInterface {
 
     // ------------------------------------------------------------------ //
-    //  Internal adjacency node
-    // ------------------------------------------------------------------ //
-
-    private static class Neighbor {
-        int dest;
-        int weight;
-
-        Neighbor(int d, int w) {
-            this.dest   = d;
-            this.weight = w;
-        }
-    }
-
-    // ------------------------------------------------------------------ //
-    //  Fields
+    //  Fields: Parallel Primitive Arrays (No Object Overhead!)
     // ------------------------------------------------------------------ //
 
     private final int totalVerts;
-    private final List<List<Neighbor>> adj;
+    
+    private final int[] head;   
+    private int[] to;           
+    private int[] weight;       
+    private int[] next;         
+    private int edgeCount;      
 
     boolean debug_mode = false;
     int last_op_id = 0;
@@ -42,66 +31,82 @@ public class Graph implements GraphInterface {
             throw new IllegalArgumentException("totalVerts must be positive, got: " + totalVerts);
         }
         this.totalVerts = totalVerts;
-        this.adj = new ArrayList<>(totalVerts);
-        for (int i = 0; i < totalVerts; i++) {
-            adj.add(new ArrayList<>());
+        
+        this.head = new int[totalVerts];
+        Arrays.fill(this.head, -1);
+        
+        int initialCapacity = Math.max(1000, totalVerts * 4);
+        this.to = new int[initialCapacity];
+        this.weight = new int[initialCapacity];
+        this.next = new int[initialCapacity];
+        this.edgeCount = 0;
+    }
+
+    // ------------------------------------------------------------------ //
+    //  Edge insertion & Memory Management
+    // ------------------------------------------------------------------ //
+
+    private void ensureCapacity() {
+        if (edgeCount == to.length) {
+            int newCap = to.length * 2;
+            to = Arrays.copyOf(to, newCap);
+            weight = Arrays.copyOf(weight, newCap);
+            next = Arrays.copyOf(next, newCap);
         }
     }
 
-    // ------------------------------------------------------------------ //
-    //  Edge insertion
-    // ------------------------------------------------------------------ //
-
-    // use this for undirected stuff (MST graphs)
     @Override
-    public void addEdge(int u, int v, int weight) {
+    public void addDirectedEdge(int u, int v, int w) {
         validateVert(u);
         validateVert(v);
-        adj.get(u).add(new Neighbor(v, weight));
-        adj.get(v).add(new Neighbor(u, weight));
+        ensureCapacity();
+        
+        to[edgeCount] = v;
+        weight[edgeCount] = w;
+        next[edgeCount] = head[u];
+        head[u] = edgeCount++;
     }
 
-    // only for DAG building, one direction only
     @Override
-    public void addDirectedEdge(int u, int v, int weight) {
-        validateVert(u);
-        validateVert(v);
-        adj.get(u).add(new Neighbor(v, weight));
+    public void addEdge(int u, int v, int w) {
+        addDirectedEdge(u, v, w);
+        addDirectedEdge(v, u, w);
     }
 
     // ------------------------------------------------------------------ //
-    //  Prim's MST
+    //  Prim's MST (Eager Version with Indexed Min-Heap)
     // ------------------------------------------------------------------ //
 
-    // prim grows the tree one cheap edge at a time, starting from vertex 0
     @Override
     public List<Edge> primMST() {
         int[] cheapestLink = new int[totalVerts];
         int[] cameFrom     = new int[totalVerts];
-        boolean[] alreadyPicked = new boolean[totalVerts];
+        boolean[] inMST    = new boolean[totalVerts];
 
         Arrays.fill(cheapestLink, Integer.MAX_VALUE);
         Arrays.fill(cameFrom, -1);
         cheapestLink[0] = 0;
 
-        PriorityQueue<int[]> pq = new PriorityQueue<>(totalVerts, (a, b) -> Integer.compare(a[0], b[0]));
-        pq.offer(new int[]{0, 0});
+        IndexedMinHeap pq = new IndexedMinHeap(totalVerts);
+        pq.insert(0, 0);
 
         while (!pq.isEmpty()) {
-            int[] top  = pq.poll();
-            int   cost = top[0];
-            int   u    = top[1];
+            int u = pq.extractMin();
+            inMST[u] = true;
 
-            if (alreadyPicked[u]) continue;
-            alreadyPicked[u] = true;
+            for (int e = head[u]; e != -1; e = next[e]) {
+                int v = to[e];
+                int w = weight[e];
 
-            for (Neighbor nb : adj.get(u)) {
-                int v = nb.dest;
-                int w = nb.weight;
-                if (!alreadyPicked[v] && w < cheapestLink[v]) {
+                if (!inMST[v] && w < cheapestLink[v]) {
                     cheapestLink[v] = w;
                     cameFrom[v]     = u;
-                    pq.offer(new int[]{w, v});
+                    
+                    if (pq.contains(v)) {
+                        pq.decreaseKey(v, w);
+                    } else {
+                        pq.insert(v, w);
+                    }
                 }
             }
         }
@@ -116,30 +121,109 @@ public class Graph implements GraphInterface {
     }
 
     // ------------------------------------------------------------------ //
+    //  Indexed Min-Heap for Eager Prim
+    // ------------------------------------------------------------------ //
+
+    private static class IndexedMinHeap {
+        int[] pq;   // Heap array (1-based index) -> vertex ID
+        int[] qp;   // Inverse map: vertex ID -> heap index
+        int[] keys; // Vertex ID -> weight
+        int size;
+
+        IndexedMinHeap(int maxVerts) {
+            pq = new int[maxVerts + 1];
+            qp = new int[maxVerts];
+            keys = new int[maxVerts];
+            Arrays.fill(qp, -1);
+            size = 0;
+        }
+
+        boolean isEmpty() { return size == 0; }
+        
+        boolean contains(int v) { return qp[v] != -1; }
+
+        void insert(int v, int key) {
+            size++;
+            qp[v] = size;
+            pq[size] = v;
+            keys[v] = key;
+            swim(size);
+        }
+
+        int extractMin() {
+            int min = pq[1];
+            swap(1, size--);
+            sink(1);
+            qp[min] = -1; // Remove from inverse map
+            return min;
+        }
+
+        void decreaseKey(int v, int key) {
+            keys[v] = key;
+            swim(qp[v]); // Eager update: sift-up the new cheaper weight
+        }
+
+        private void swim(int k) {
+            while (k > 1 && keys[pq[k / 2]] > keys[pq[k]]) {
+                swap(k, k / 2);
+                k = k / 2;
+            }
+        }
+
+        private void sink(int k) {
+            while (2 * k <= size) {
+                int j = 2 * k;
+                if (j < size && keys[pq[j]] > keys[pq[j + 1]]) j++;
+                if (keys[pq[k]] <= keys[pq[j]]) break;
+                swap(k, j);
+                k = j;
+            }
+        }
+
+        private void swap(int i, int j) {
+            int temp = pq[i];
+            pq[i] = pq[j];
+            pq[j] = temp;
+            qp[pq[i]] = i;
+            qp[pq[j]] = j;
+        }
+    }
+
+    // ------------------------------------------------------------------ //
     //  Kruskal's MST
     // ------------------------------------------------------------------ //
 
-    // kruskal picks the globally cheapest edge that doesnt cause a cycle
     @Override
     public List<Edge> kruskalMST() {
-        List<Edge> allEdges = new ArrayList<>();
+        long[] edges = new long[edgeCount / 2];
+        int c = 0;
+
         for (int u = 0; u < totalVerts; u++) {
-            for (Neighbor nb : adj.get(u)) {
-                if (u < nb.dest) {
-                    allEdges.add(new Edge(u, nb.dest, nb.weight));
+            for (int e = head[u]; e != -1; e = next[e]) {
+                int v = to[e];
+                if (u < v) { 
+                    long encodedEdge = ((long) weight[e] << 32) | ((long) u << 16) | (long) v;
+                    edges[c++] = encodedEdge;
                 }
             }
         }
-        Collections.sort(allEdges);
+
+        Arrays.sort(edges, 0, c);
 
         UnionFind uf  = new UnionFind(totalVerts);
         List<Edge> mst = new ArrayList<>(totalVerts - 1);
 
-        for (Edge e : allEdges) {
+        for (int i = 0; i < c; i++) {
             if (mst.size() == totalVerts - 1) break;
-            if (uf.getRoot(e.source) != uf.getRoot(e.destination)) {
-                uf.merge(e.source, e.destination);
-                mst.add(e);
+            
+            long e = edges[i];
+            int w = (int) (e >> 32);
+            int u = (int) ((e >> 16) & 0xFFFF);
+            int v = (int) (e & 0xFFFF);
+
+            if (uf.getRoot(u) != uf.getRoot(v)) {
+                uf.merge(u, v);
+                mst.add(new Edge(u, v, w));
             }
         }
         return mst;
@@ -178,7 +262,6 @@ public class Graph implements GraphInterface {
     //  Dijkstra's SSSP
     // ------------------------------------------------------------------ //
 
-    // classic dijkstra, nothing fancy, just a priority queue and relaxation
     @Override
     public int[] dijkstra(int source) {
         validateVert(source);
@@ -199,10 +282,11 @@ public class Graph implements GraphInterface {
             if (locked[u]) continue;
             locked[u] = true;
 
-            for (Neighbor nb : adj.get(u)) {
-                int v = nb.dest;
+            for (int e = head[u]; e != -1; e = next[e]) {
+                int v = to[e];
+                int w = weight[e];
                 if (!locked[v] && bestDist[u] != Integer.MAX_VALUE) {
-                    long candidate = (long) bestDist[u] + nb.weight;
+                    long candidate = (long) bestDist[u] + w;
                     if (candidate < bestDist[v]) {
                         bestDist[v] = (int) candidate;
                         pq.offer(new int[]{bestDist[v], v});
@@ -217,71 +301,60 @@ public class Graph implements GraphInterface {
     //  DAG Shortest Path
     // ------------------------------------------------------------------ //
 
-    // linear time because we process in topo order, no pq needed
     @Override
     public int[] dagShortestPath(int source) {
         validateVert(source);
-
-        int[] topoOrder = kahnsTopoSort();
 
         int[] dist = new int[totalVerts];
         Arrays.fill(dist, Integer.MAX_VALUE);
         dist[source] = 0;
 
-        for (int u : topoOrder) {
-            if (dist[u] == Integer.MAX_VALUE) continue;
-            for (Neighbor nb : adj.get(u)) {
-                long candidate = (long) dist[u] + nb.weight;
-                if (candidate < dist[nb.dest]) {
-                    dist[nb.dest] = (int) candidate;
+        boolean[] visited = new boolean[totalVerts];
+        boolean[] inStack = new boolean[totalVerts];
+        int[] topoOrder   = new int[totalVerts];
+        int[] index       = {totalVerts - 1}; 
+
+        dfsTopoSort(source, visited, inStack, topoOrder, index);
+
+        for (int i = index[0] + 1; i < totalVerts; i++) {
+            int u = topoOrder[i];
+            if (dist[u] != Integer.MAX_VALUE) {
+                for (int e = head[u]; e != -1; e = next[e]) {
+                    int v = to[e];
+                    int w = weight[e];
+                    long candidate = (long) dist[u] + w;
+                    if (candidate < dist[v]) {
+                        dist[v] = (int) candidate;
+                    }
                 }
             }
         }
+        
         return dist;
     }
 
-    // ------------------------------------------------------------------ //
-    //  Kahn's topological sort
-    // ------------------------------------------------------------------ //
+    private void dfsTopoSort(int u, boolean[] visited, boolean[] inStack, int[] topoOrder, int[] index) {
+        visited[u] = true;
+        inStack[u] = true; 
 
-    // kahns bfs topo sort, also doubles as cycle detector which is neat
-    private int[] kahnsTopoSort() {
-        int[] incomingCount = new int[totalVerts];
-        for (int u = 0; u < totalVerts; u++) {
-            for (Neighbor nb : adj.get(u)) {
-                incomingCount[nb.dest]++;
+        for (int e = head[u]; e != -1; e = next[e]) {
+            int v = to[e];
+            if (inStack[v]) {
+                throw new IllegalStateException("Graph is not a DAG; cycle detected!");
+            }
+            if (!visited[v]) {
+                dfsTopoSort(v, visited, inStack, topoOrder, index);
             }
         }
 
-        ArrayDeque<Integer> queue = new ArrayDeque<>();
-        for (int v = 0; v < totalVerts; v++) {
-            if (incomingCount[v] == 0) queue.offer(v);
-        }
-
-        int[] processingOrder = new int[totalVerts];
-        int   filled          = 0;
-
-        while (!queue.isEmpty()) {
-            int u = queue.poll();
-            processingOrder[filled++] = u;
-            for (Neighbor nb : adj.get(u)) {
-                if (--incomingCount[nb.dest] == 0) {
-                    queue.offer(nb.dest);
-                }
-            }
-        }
-
-        if (filled != totalVerts) {
-            throw new IllegalStateException("cycle found, this isnt a DAG");
-        }
-        return processingOrder;
+        inStack[u] = false; 
+        topoOrder[index[0]--] = u; 
     }
 
     // ------------------------------------------------------------------ //
     //  Helpers
     // ------------------------------------------------------------------ //
 
-    // sanity check so we dont get weird array index errors
     private void validateVert(int v) {
         if (v < 0 || v >= totalVerts) {
             throw new IllegalArgumentException(
@@ -293,6 +366,6 @@ public class Graph implements GraphInterface {
 
     @Override
     public String toString() {
-        return "Graph{totalVerts=" + totalVerts + "}";
+        return "Graph{totalVerts=" + totalVerts + ", edges=" + edgeCount + "}";
     }
 }

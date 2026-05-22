@@ -3,6 +3,34 @@
   "topology" : "SPARSE",
   "vertCount" : 5000,
   "fixedSeed" : 1685957280,
-  "builtAt" : 1779405463795,
+  "builtAt" : 1779457758547,
+  "currentStage" : "FRESH"
+}, {
+  "label" : "graphSPARSE",
+  "topology" : "SPARSE",
+  "vertCount" : 10000,
+  "fixedSeed" : 1664140276,
+  "builtAt" : 1779457758547,
+  "currentStage" : "BENCHMARKED"
+}, {
+  "label" : "test",
+  "topology" : "DENSE",
+  "vertCount" : 10000,
+  "fixedSeed" : 1277685556,
+  "builtAt" : 1779458206965,
   "currentStage" : "GRAPH_READY"
+}, {
+  "label" : "graphDAG",
+  "topology" : "DAG",
+  "vertCount" : 5000,
+  "fixedSeed" : 1778821932,
+  "builtAt" : 1779457758547,
+  "currentStage" : "FRESH"
+}, {
+  "label" : "graphComplete",
+  "topology" : "COMPLETE",
+  "vertCount" : 5000,
+  "fixedSeed" : 112720212,
+  "builtAt" : 1779457758547,
+  "currentStage" : "BENCHMARKED"
 } ]
